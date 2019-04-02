@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+}
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Aligner > app-team {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

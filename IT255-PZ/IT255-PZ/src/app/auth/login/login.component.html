@@ -1,0 +1,16 @@
+<div class="flexColumn">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <h1 class="mat-headline">Login with an existing account</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your email address</mat-label>
+            <input matInput placeholder="email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email').invalid">{{getEmailErrorMsg()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password').invalid">{{getPasswordErrorMsg()}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
+    </form>
+</div>

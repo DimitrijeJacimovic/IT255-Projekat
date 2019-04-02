@@ -1,0 +1,17 @@
+.flexColumn
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img
+{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+mat-progress-bar
+{
+    max-width: 200px;
+}

@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container" fullscreen>
+    <mat-sidenav
+            #drawer
+            class="sidenav"
+            fixedInViewport="true"
+            [attr.role]="isHandset ? 'dialog' : 'navigation'"
+            [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+            [opened]="!(isHandset | async)!.matches">
+        <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/home">
+                <mat-icon>home</mat-icon>
+                Home
+            </a>
+            <ng-template [ngIf]="this.authService.authenticated">
+                <a mat-list-item routerLink="/team">
+                    <mat-icon>people</mat-icon>
+                    Our team
+                </a>
+                <a mat-list-item routerLink="/settings">
+                    <mat-icon>settings</mat-icon>
+                    Account settings
+                </a>
+            </ng-template>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+                    type="button"
+                    aria-label="Toggle sidenav"
+                    mat-icon-button
+                    (click)="drawer.toggle()"
+                    *ngIf="(isHandset | async)!.matches">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>Community</span>
+            <span class="flexSpacer"></span>
+            <ng-template [ngIf]="this.authService.authenticated">
+                <mat-icon>person</mat-icon>
+                <span>{{this.authService.displayName}}</span>
+                <button (click)="this.authService.logoutUser();" mat-button>Logout
+                    <mat-icon>exit_to_app</mat-icon>
+                </button>
+            </ng-template>
+            <ng-template [ngIf]="!this.authService.authenticated">
+                <button routerLink="/auth" mat-button>Log in
+                    <mat-icon>exit_to_app</mat-icon>
+                </button>
+            </ng-template>
+        </mat-toolbar>
+        <div class="Aligner">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
